@@ -1,0 +1,56 @@
+version: "3.9"
+services:
+
+  #app:
+  #  container_name: app-demo-laravel
+  #  build:
+  #    context: ./
+  #  volumes:
+  #    - .:/var/www/html
+  #    - .env.prod:/var/www/html/.env
+  #  ports:
+  #    - "8080:80"
+  #  depends_on:
+  #    - cerbos
+  #    - mysql
+
+  cerbos:
+    container_name: cerbos-demo-larevel
+    image: ghcr.io/cerbos/cerbos:latest
+    command: ["server", "--config=/data/config.yaml"]
+    environment:
+      - CERBOS_NO_TELEMETRY=1
+    restart: always
+    volumes:
+      - ./docker/cerbos:/data
+    ports:
+      - "3593:3593"
+
+  mysql:
+    container_name: mysql-demo-laravel
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+    - MYSQL_DATABASE=laravel
+    - MYSQL_ROOT_PASSWORD=laravel
+    - MYSQL_USER=laravel
+    - MYSQL_PASSWORD=laravel
+    ports:
+      - "127.0.0.1:3306:3306"
+    volumes:
+    - ./docker/data/mysql:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin-demo-laravel
+    environment:
+      PMA_HOST: mysql-demo-laravel
+      PMA_PASSWORD: laravel
+    restart: always
+    ports:
+      - "127.0.0.1:9000:80"
+    volumes:
+      - ./docker/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
+    depends_on:
+      - mysql
