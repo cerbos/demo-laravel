@@ -16,7 +16,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 /**
  *
@@ -37,9 +37,10 @@ class ExpenseController extends Controller
             PlanResourcesRequest::newInstance()
                 ->withRequestId(RequestId::generate())
                 ->withPrincipal(
-                    Principal::newInstance("oguzhan")
-                        ->withRole("USER")
-                        ->withAttribute("department", AttributeValue::stringValue("marketing"))
+                    Principal::newInstance($request->user()->id)
+                        ->withRoles(explode(',', $request->user()->roles))
+                        ->withAttribute('region', AttributeValue::stringValue($request->user()->region))
+                        ->withAttribute('department', AttributeValue::stringValue($request->user()->department))
                 )
                 ->withResource(
                     Resource::newInstance("expense", $resourceId)
@@ -59,12 +60,14 @@ class ExpenseController extends Controller
     }
 
     /**
+     * @param Request $request
      * @param int $id
      * @param CerbosClient $cerbos
      * @return Application|\Illuminate\Foundation\Application|JsonResponse|Response|ResponseFactory
      * @throws Exception
      */
-    public function get(int $id, CerbosClient $cerbos) {
+    public function get(Request $request, int $id, CerbosClient $cerbos): \Illuminate\Foundation\Application|Response|JsonResponse|Application|ResponseFactory
+    {
         $expense = Expense::where('id', $id)->first();
         if (!$expense) {
             return response()->json(["error" => "failed to find related expense"], 404);
@@ -80,9 +83,10 @@ class ExpenseController extends Controller
             CheckResourcesRequest::newInstance()
                 ->withRequestId(RequestId::generate())
                 ->withPrincipal(
-                    Principal::newInstance("oguzhan")
-                        ->withRole("USER")
-                        ->withAttribute("department", AttributeValue::stringValue("marketing"))
+                    Principal::newInstance($request->user()->id)
+                        ->withRoles(explode(',', $request->user()->roles))
+                        ->withAttribute('region', AttributeValue::stringValue($request->user()->region))
+                        ->withAttribute('department', AttributeValue::stringValue($request->user()->department))
                 )
                 ->withResourceEntry(
                     ResourceEntry::newInstance("expense", $expense->id)
@@ -121,17 +125,18 @@ class ExpenseController extends Controller
      * @param CerbosClient $cerbos
      * @return void
      */
-    public function create(Expense $expense, CerbosClient $cerbos) {
+    public function create(Request $request, Expense $expense, CerbosClient $cerbos) {
         // TODO
     }
 
     /**
+     * @param Request $request
      * @param int $id
      * @param CerbosClient $cerbos
      * @return JsonResponse
      * @throws Exception
      */
-    public function delete(int $id, CerbosClient $cerbos)
+    public function delete(Request $request, int $id, CerbosClient $cerbos): JsonResponse
     {
         $expense = Expense::where('id', $id)->first();
         if (!$expense) {
@@ -143,9 +148,10 @@ class ExpenseController extends Controller
             CheckResourcesRequest::newInstance()
                 ->withRequestId(RequestId::generate())
                 ->withPrincipal(
-                    Principal::newInstance("oguzhan")
-                        ->withRole("USER")
-                        ->withAttribute("department", AttributeValue::stringValue("marketing"))
+                    Principal::newInstance($request->user()->id)
+                        ->withRoles(explode(',', $request->user()->roles))
+                        ->withAttribute('region', AttributeValue::stringValue($request->user()->region))
+                        ->withAttribute('department', AttributeValue::stringValue($request->user()->department))
                 )
                 ->withResourceEntry(
                     ResourceEntry::newInstance("expense", $expense->id)
@@ -167,12 +173,13 @@ class ExpenseController extends Controller
     }
 
     /**
+     * @param Request $request
      * @param int $id
      * @param Expense $expense
      * @param CerbosClient $cerbos
      * @return void
      */
-    public function update(int $id, Expense $expense, CerbosClient $cerbos) {
+    public function update(Request $request, int $id, Expense $expense, CerbosClient $cerbos) {
         // TODO
     }
 
@@ -183,7 +190,8 @@ class ExpenseController extends Controller
      * @return Application|ResponseFactory|\Illuminate\Foundation\Application|JsonResponse|Response
      * @throws Exception
      */
-    public function approve(Request $request, int $id, CerbosClient $cerbos) {
+    public function approve(Request $request, int $id, CerbosClient $cerbos): \Illuminate\Foundation\Application|Response|JsonResponse|Application|ResponseFactory
+    {
         $expense = Expense::where('id', $id)->first();
         if (!$expense) {
             return response()->json(["error" => "failed to find related expense"], 404);
@@ -194,9 +202,10 @@ class ExpenseController extends Controller
             CheckResourcesRequest::newInstance()
                 ->withRequestId(RequestId::generate())
                 ->withPrincipal(
-                    Principal::newInstance("oguzhan")
-                        ->withRole("USER")
-                        ->withAttribute("department", AttributeValue::stringValue("marketing"))
+                    Principal::newInstance($request->user()->id)
+                        ->withRoles(explode(',', $request->user()->roles))
+                        ->withAttribute('region', AttributeValue::stringValue($request->user()->region))
+                        ->withAttribute('department', AttributeValue::stringValue($request->user()->department))
                 )
                 ->withResourceEntry(
                     ResourceEntry::newInstance("expense", $expense->id)
@@ -238,9 +247,10 @@ class ExpenseController extends Controller
             CheckResourcesRequest::newInstance()
                 ->withRequestId(RequestId::generate())
                 ->withPrincipal(
-                    Principal::newInstance("oguzhan")
-                        ->withRole("USER")
-                        ->withAttribute("department", AttributeValue::stringValue("marketing"))
+                    Principal::newInstance($request->user()->id)
+                        ->withRoles(explode(',', $request->user()->roles))
+                        ->withAttribute('region', AttributeValue::stringValue($request->user()->region))
+                        ->withAttribute('department', AttributeValue::stringValue($request->user()->department))
                 )
                 ->withResourceEntry(
                     ResourceEntry::newInstance("expense", $expense->id)
