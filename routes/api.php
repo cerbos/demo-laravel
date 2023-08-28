@@ -19,7 +19,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout']);
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/expenses', [ExpenseController::class, 'list']);
+    Route::get('/expenses', [ExpenseController::class, 'index']);
     Route::get('/expenses/{id}', [ExpenseController::class, 'get']);
     Route::post('/expenses', [ExpenseController::class, 'create']);
     Route::delete('/expenses/{id}', [ExpenseController::class, 'delete']);

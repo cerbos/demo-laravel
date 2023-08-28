@@ -29,7 +29,7 @@ class ExpenseController extends Controller
      * @return \Illuminate\Foundation\Application|Application|Response|ResponseFactory
      * @throws Exception
      */
-    public function list(Request $request, CerbosClient $cerbos): Application|ResponseFactory|\Illuminate\Foundation\Application|Response
+    public function index(Request $request, CerbosClient $cerbos): Application|ResponseFactory|\Illuminate\Foundation\Application|Response
     {
         $action = "view";
         $resourceId = RequestId::generate();
@@ -121,12 +121,44 @@ class ExpenseController extends Controller
     }
 
     /**
-     * @param Expense $expense
+     * @param Request $request
      * @param CerbosClient $cerbos
-     * @return void
+     * @return JsonResponse
+     * @throws Exception
      */
-    public function create(Request $request, Expense $expense, CerbosClient $cerbos) {
-        // TODO
+    public function create(Request $request, CerbosClient $cerbos) {
+        $expense = new Expense();
+        $expense->amount = $request->get('amount');
+        $expense->region = $request->get('region');
+        $expense->status = 'OPEN';
+        $expense->owner_id = $request->user()->id;
+        $expense->vendor = $request->get('vendor');
+
+        $action = "create";
+        $allowed = $cerbos->checkResources(
+            CheckResourcesRequest::newInstance()
+                ->withRequestId(RequestId::generate())
+                ->withPrincipal(
+                    Principal::newInstance($request->user()->id)
+                        ->withRoles(explode(',', $request->user()->roles))
+                        ->withAttribute('region', AttributeValue::stringValue($request->user()->region))
+                        ->withAttribute('department', AttributeValue::stringValue($request->user()->department))
+                )
+                ->withResourceEntry(
+                    ResourceEntry::newInstance("expense", 'NEW')
+                        ->withAction($action)
+                )
+        )->find("NEW")->isAllowed($action);
+
+        if (!$allowed) {
+            return response(null, 401);
+        }
+
+        if (!$expense->save()) {
+            return response()->json(["error" => "failed to create the expense"], 400);
+        }
+
+        return response()->json($expense);
     }
 
     /**
@@ -175,12 +207,50 @@ class ExpenseController extends Controller
     /**
      * @param Request $request
      * @param int $id
-     * @param Expense $expense
      * @param CerbosClient $cerbos
-     * @return void
+     * @return Application|ResponseFactory|\Illuminate\Foundation\Application|JsonResponse|Response
+     * @throws Exception
      */
-    public function update(Request $request, int $id, Expense $expense, CerbosClient $cerbos) {
-        // TODO
+    public function update(Request $request, int $id, CerbosClient $cerbos): \Illuminate\Foundation\Application|Response|JsonResponse|Application|ResponseFactory
+    {
+        $expense = Expense::where('id', $id)->first();
+        if (!$expense) {
+            return response()->json(["error" => "failed to find related expense"], 404);
+        }
+
+        $action = "update";
+        $allowed = $cerbos->checkResources(
+            CheckResourcesRequest::newInstance()
+                ->withRequestId(RequestId::generate())
+                ->withPrincipal(
+                    Principal::newInstance($request->user()->id)
+                        ->withRoles(explode(',', $request->user()->roles))
+                        ->withAttribute('region', AttributeValue::stringValue($request->user()->region))
+                        ->withAttribute('department', AttributeValue::stringValue($request->user()->department))
+                )
+                ->withResourceEntry(
+                    ResourceEntry::newInstance("expense", $expense->id)
+                        ->withAttribute("amount", AttributeValue::floatValue($expense->amount))
+                        ->withAttribute("region", AttributeValue::stringValue($expense->region))
+                        ->withAttribute("status", AttributeValue::stringValue($expense->status))
+                        ->withAttribute("ownerId", AttributeValue::stringValue($expense->owner_id))
+                        ->withAttribute("vendor", AttributeValue::stringValue($expense->vendor))
+                        ->withAction($action)
+                )
+        )->find($expense->id)->isAllowed($action);
+
+        if (!$allowed) {
+            return response(null, 401);
+        }
+
+        $expense->amount = $request->get('amount');
+        $expense->region = $request->get('region');
+        $expense->vendor = $request->get('vendor');
+        if (!$expense->save()) {
+            return response()->json(["error" => "failed to update the expense"], 400);
+        }
+
+        return response()->json($expense);
     }
 
     /**
