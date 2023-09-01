@@ -1,13 +1,16 @@
 {
-    "name": "docker/cerbos/laravel-demo",
+    "name": "cerbos/demo-laravel",
     "type": "project",
     "description": "Laravel demo for docker/cerbos",
     "keywords": [
-        "docker/cerbos", "laravel", "demo"],
-    "license": "MIT",
+        "docker/cerbos",
+        "laravel",
+        "demo"
+    ],
+    "license": "Apache-2.0",
     "require": {
         "php": "^8.2",
-        "cerbos/cerbos-sdk-php": "^1.1",
+        "cerbos/cerbos-sdk-laravel": "^0.1.0",
         "doctrine/dbal": "^3.6",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
