@@ -27,5 +27,3 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/expenses/{id}/approve', [ExpenseController::class, 'approve']);
     Route::post('/expenses/{id}/reject', [ExpenseController::class, 'reject']);
 });
-
-

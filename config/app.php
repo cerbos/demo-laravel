@@ -1,6 +1,5 @@
 <?php
 
-use App\Facades\Cerbos;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
@@ -166,9 +165,8 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        App\Providers\CerbosServiceProvider::class,
         App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        App\Providers\RouteServiceProvider::class
     ])->toArray(),
 
     /*
@@ -182,8 +180,5 @@ return [
     |
     */
 
-    'aliases' => Facade::defaultAliases()->merge([
-        'Cerbos' => Cerbos::class,
-    ])->toArray(),
-
+    'aliases' => Facade::defaultAliases()->merge([])->toArray(),
 ];
