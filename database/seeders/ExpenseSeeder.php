@@ -13,7 +13,6 @@ class ExpenseSeeder extends Seeder
         DB::table('expenses')->updateOrInsert([
             'id' => 1,
             'amount' => 500,
-            'approved_by_id' => 1,
             'region' => 'EMEA',
             'status' => 'OPEN',
             'owner_id' => 1,
