@@ -3,6 +3,13 @@
 This project demonstrates how to utilize [Cerbos](https://cerbos.dev) with 
 [Cerbos Laravel SDK](https://github.com/cerbos/cerbos-sdk-laravel).
 
+## Usage
+
+- Run `composer install` and `npm install` to install dependencies.
+- Run `docker compose up` to launch a `cerbos` and `mysql` instance.
+- Run `php artisan migrate` to migrate database schema to the `mysql` instance.
+- Run `php artisan serve` to serve the Laravel application.
+
 ## API
 
 ### `POST /api/register`
