@@ -9,7 +9,7 @@
     ],
     "license": "Apache-2.0",
     "require": {
-        "php": "^8.2",
+        "php": "^8.4",
         "cerbos/cerbos-sdk-laravel": "^v0.3",
         "doctrine/dbal": "^4.0",
         "guzzlehttp/guzzle": "^7.9",
