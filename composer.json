@@ -10,22 +10,22 @@
     "license": "Apache-2.0",
     "require": {
         "php": "^8.4",
-        "cerbos/cerbos-sdk-laravel": "^v0.3",
-        "doctrine/dbal": "^4.0",
-        "guzzlehttp/guzzle": "^7.9",
-        "laravel/framework": "^v11.20",
-        "laravel/sanctum": "^v4.0",
-        "laravel/tinker": "^v2.9"
+        "cerbos/cerbos-sdk-laravel": "v0.6.0",
+        "doctrine/dbal": "4.3.4",
+        "guzzlehttp/guzzle": "7.10.0",
+        "laravel/framework": "v12.39.0",
+        "laravel/sanctum": "v4.2.0",
+        "laravel/tinker": "v2.10.1"
     },
     "require-dev": {
-        "fakerphp/faker": "^v1.23",
-        "laravel/pint": "^1.17",
-        "laravel/sail": "^1.31",
-        "mockery/mockery": "^1.6",
-        "nunomaduro/collision": "^v8.4",
-        "php-parallel-lint/php-parallel-lint": "^1.4",
-        "phpunit/phpunit": "^11.3",
-        "spatie/laravel-ignition": "^2.8"
+        "fakerphp/faker": "v1.24.1",
+        "laravel/pint": "v1.25.1",
+        "laravel/sail": "v1.48.1",
+        "mockery/mockery": "1.6.12",
+        "nunomaduro/collision": "v8.8.3",
+        "php-parallel-lint/php-parallel-lint": "1.4.0",
+        "phpunit/phpunit": "12.4.3",
+        "spatie/laravel-ignition": "2.9.1"
     },
     "autoload": {
         "psr-4": {
