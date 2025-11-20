@@ -1,22 +1,18 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "baseBranchPatterns": ["main"],
+    "commitMessageLowerCase": "never",
+    "dependencyDashboard": true,
     "extends": [
-        "config:base",
-        "group:allNonMajor",
-        "schedule:weekly",
         ":automergeDisabled",
-        ":combinePatchMinorReleases",
+        "config:recommended",
+        "docker:disable",
         ":gitSignOff",
+        "group:allNonMajor",
         ":renovatePrefix",
+        "schedule:monthly",
         ":semanticCommitTypeAll(chore)",
         ":separateMultipleMajorReleases"
     ],
-    "packageRules": [
-        {
-            "matchManagers": ["composer", "github-actions"],
-            "groupName": "Dependencies",
-            "groupSlug": "deps"
-        }
-    ],
-    "labels": ["area/deps", "bots", "kind/chore"]
+    "labels": ["area/dependencies", "bots", "kind/chore"]
 }
