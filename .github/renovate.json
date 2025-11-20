@@ -18,9 +18,5 @@
             "groupSlug": "deps"
         }
     ],
-    "labels": [
-        "area/deps",
-        "bots",
-        "kind/chore"
-    ]
+    "labels": ["area/deps", "bots", "kind/chore"]
 }
