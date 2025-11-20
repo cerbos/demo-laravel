@@ -5,7 +5,7 @@ on:
   pull_request:
     branches:
       - main
-      - 'v*'
+      - "v*"
 
 jobs:
   lint:
@@ -14,8 +14,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php-version: [ '8.2' ]
-        experimental: [ false ]
+        php-version: ["8.4"]
+        experimental: [false]
 
     steps:
       - name: Checkout repository
@@ -48,13 +48,13 @@ jobs:
 
   unit-tests:
     name: Unit Test
-    needs: [ "lint" ]
+    needs: ["lint"]
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        php-version: [ '8.2' ]
-        experimental: [ false ]
+        php-version: ["8.4"]
+        experimental: [false]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
