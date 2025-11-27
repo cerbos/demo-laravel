@@ -1,31 +1,32 @@
 {
     "name": "cerbos/demo-laravel",
     "type": "project",
-    "description": "Laravel demo for docker/cerbos",
+    "description": "Demo of using cerbos with php laravel",
     "keywords": [
-        "docker/cerbos",
+        "docker",
+        "cerbos",
         "laravel",
         "demo"
     ],
     "license": "Apache-2.0",
     "require": {
         "php": "^8.4",
-        "cerbos/cerbos-sdk-laravel": "v0.6.0",
-        "doctrine/dbal": "4.3.4",
-        "guzzlehttp/guzzle": "7.10.0",
-        "laravel/framework": "v12.39.0",
-        "laravel/sanctum": "v4.2.0",
-        "laravel/tinker": "v2.10.1"
+        "cerbos/cerbos-sdk-laravel": "^v0.6",
+        "doctrine/dbal": "^4.3",
+        "guzzlehttp/guzzle": "^7.10",
+        "laravel/framework": "^v12.40",
+        "laravel/sanctum": "^v4.2",
+        "laravel/tinker": "^v2.10"
     },
     "require-dev": {
-        "fakerphp/faker": "v1.24.1",
-        "laravel/pint": "v1.25.1",
-        "laravel/sail": "v1.48.1",
-        "mockery/mockery": "1.6.12",
-        "nunomaduro/collision": "v8.8.3",
-        "php-parallel-lint/php-parallel-lint": "1.4.0",
-        "phpunit/phpunit": "12.4.4",
-        "spatie/laravel-ignition": "2.9.1"
+        "fakerphp/faker": "^v1.24",
+        "laravel/pint": "^v1.26",
+        "laravel/sail": "^v1.48",
+        "mockery/mockery": "^1.6",
+        "nunomaduro/collision": "^v8.8",
+        "php-parallel-lint/php-parallel-lint": "^1.4",
+        "phpunit/phpunit": "^12.4",
+        "spatie/laravel-ignition": "^2.9"
     },
     "autoload": {
         "psr-4": {
