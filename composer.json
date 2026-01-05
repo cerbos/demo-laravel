@@ -11,7 +11,7 @@
     "license": "Apache-2.0",
     "require": {
         "php": "^8.4",
-        "cerbos/cerbos-sdk-laravel": "^v0.6",
+        "cerbos/cerbos-sdk-laravel": "^v1.0.0",
         "doctrine/dbal": "^4.3",
         "guzzlehttp/guzzle": "^7.10",
         "laravel/framework": "^v12.40",

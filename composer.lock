@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8da146a1855418a2807155884e5ca49f",
+    "content-hash": "8ba79685a57c3a277eae5b32e8d7dec2",
     "packages": [
         {
             "name": "brick/math",
@@ -137,22 +137,22 @@
         },
         {
             "name": "cerbos/cerbos-sdk-laravel",
-            "version": "v0.6.1",
+            "version": "v1.10.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cerbos/cerbos-sdk-laravel.git",
-                "reference": "446f1bd515081fa29c0fd5b60307bcefb517d786"
+                "reference": "d6be4fc7228726c87e456f5da9b5974a91c9e7af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cerbos/cerbos-sdk-laravel/zipball/446f1bd515081fa29c0fd5b60307bcefb517d786",
-                "reference": "446f1bd515081fa29c0fd5b60307bcefb517d786",
+                "url": "https://api.github.com/repos/cerbos/cerbos-sdk-laravel/zipball/d6be4fc7228726c87e456f5da9b5974a91c9e7af",
+                "reference": "d6be4fc7228726c87e456f5da9b5974a91c9e7af",
                 "shasum": ""
             },
             "require": {
                 "cerbos/cerbos-sdk-php": "^v1.10",
                 "illuminate/support": "^v12.40",
-                "php": "^8.3 || ^8.4"
+                "php": "^8.4"
             },
             "require-dev": {
                 "php-parallel-lint/php-parallel-lint": "^1.4",
@@ -192,9 +192,9 @@
             ],
             "support": {
                 "issues": "https://github.com/cerbos/cerbos-sdk-laravel/issues",
-                "source": "https://github.com/cerbos/cerbos-sdk-laravel/tree/v0.6.1"
+                "source": "https://github.com/cerbos/cerbos-sdk-laravel/tree/v1.10.4"
             },
-            "time": "2025-11-27T13:49:30+00:00"
+            "time": "2026-01-05T11:11:25+00:00"
         },
         {
             "name": "cerbos/cerbos-sdk-php",
