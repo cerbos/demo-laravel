@@ -25,7 +25,7 @@
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^v8.8",
         "php-parallel-lint/php-parallel-lint": "^1.4",
-        "phpunit/phpunit": "^12.4",
+        "phpunit/phpunit": "^13.0",
         "spatie/laravel-ignition": "^2.9"
     },
     "autoload": {
