@@ -137,16 +137,16 @@
         },
         {
             "name": "cerbos/cerbos-sdk-laravel",
-            "version": "v1.10.5",
+            "version": "v1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cerbos/cerbos-sdk-laravel.git",
-                "reference": "012c5ccc5ecc24141dffd7cfca19b33ca0128620"
+                "reference": "d8958d0a2f0953f18316167926a88b67000a30a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cerbos/cerbos-sdk-laravel/zipball/012c5ccc5ecc24141dffd7cfca19b33ca0128620",
-                "reference": "012c5ccc5ecc24141dffd7cfca19b33ca0128620",
+                "url": "https://api.github.com/repos/cerbos/cerbos-sdk-laravel/zipball/d8958d0a2f0953f18316167926a88b67000a30a6",
+                "reference": "d8958d0a2f0953f18316167926a88b67000a30a6",
                 "shasum": ""
             },
             "require": {
@@ -192,9 +192,9 @@
             ],
             "support": {
                 "issues": "https://github.com/cerbos/cerbos-sdk-laravel/issues",
-                "source": "https://github.com/cerbos/cerbos-sdk-laravel/tree/v1.10.5"
+                "source": "https://github.com/cerbos/cerbos-sdk-laravel/tree/v1.11.0"
             },
-            "time": "2026-02-06T14:10:44+00:00"
+            "time": "2026-03-02T12:36:24+00:00"
         },
         {
             "name": "cerbos/cerbos-sdk-php",
