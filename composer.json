@@ -16,7 +16,7 @@
         "guzzlehttp/guzzle": "^7.10",
         "laravel/framework": "^v12.40",
         "laravel/sanctum": "^v4.2",
-        "laravel/tinker": "^v2.10"
+        "laravel/tinker": "^v3.0.0"
     },
     "require-dev": {
         "fakerphp/faker": "^v1.24",
